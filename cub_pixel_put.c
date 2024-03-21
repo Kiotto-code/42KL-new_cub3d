@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enum.h                                             :+:      :+:    :+:   */
+/*   cub_pixel_put.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 20:16:59 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/21 17:48:38 by yichan           ###   ########.fr       */
+/*   Created: 2023/03/25 00:53:09 by absalhi           #+#    #+#             */
+/*   Updated: 2024/03/21 17:49:39 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycast.h"
 
-enum Status {
-  SUCCESS,
-  FAIL,
-};
-
-enum
+void	cub_pixel_put(t_game *g, float x, float y, int color)
 {
-	TEXT_N = 0,
-	TEXT_S,
-	TEXT_E,
-	TEXT_W,
-};
+	t_image	*image;
+	char	*dst;
+	int		int_x;
+	int		int_y;
 
-enum {
-	NO,
-	SO,
-	WE,
-	EA,
-	F,
-	C,
-	END,
-};
-
-
-// enum Status {
-//   SUCCESS,
-//   FAIL,
-// };
+	image = &g->frame;
+	int_x = (int)round(x);
+	int_y = (int)round(y);
+	if (x < 0 || x > g->win.width || y < 0 || y > g->win.height)
+		return ;
+	dst = image->addr + (int_y * image->line_length
+			+ int_x * (image->bpp / 8));
+	*(unsigned int *)dst = color;
+}

@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 23:20:49 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/21 16:22:40 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:45:19 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	raycast(t_data *data)
 		find_vert_steps(data, i, &dist, &delta_depth);
 		check_vert_inters(data, i, dist, delta_depth);
 		final_inters(data, i);
-		// draw_walls(data, it, ray_angle);
+		draw_walls(data, i, ray_angle);
 		ray_angle += data->constant->delta_angle; // each ray will add 0.0555555
 	}
 }

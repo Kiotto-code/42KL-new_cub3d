@@ -323,3 +323,12 @@ int	get_colors(t_map *map);
 
 //movement.c
 int	player_movement(t_game *g);
+
+//draw_walls.c
+unsigned int	get_textcolor(t_game *g, int type, t_iterators text_offset);
+void			put_stripe(t_game *g, t_iterators it, t_iterators text_offset, int i);
+void			draw_stripe(t_game *g, t_iterators it, int wall_top, int wall_bottom);
+void			draw_walls(t_game *g, t_iterators it, float ray_angle);
+
+///cub_pixel_put.c
+void	cub_pixel_put(t_game *g, float x, float y, int color);

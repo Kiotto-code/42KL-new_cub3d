@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 21:42:58 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/21 17:10:27 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:26:30 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,9 @@ void	put_map(t_data *data)
 		y++;
 	}
 	// put_rays(data, (double)CELL_SIZE / data->cell_size);
-	mlx_put_image_to_window(data->mlx->mlx,
-		data->mlx->win, data->mlx->img, 0, 0);
+	
+	// mlx_put_image_to_window(data->mlx->mlx,
+	// 	data->mlx->win, data->mlx->img, 0, 0);
 }
 // void	put_map(t_data *data)
 // {

@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 01:27:32 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/21 17:10:22 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:26:24 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ int	cub_render(t_book *record)
 	t_game				*g;
 
 	g = record->game;
-	g->mlx = record->data->mlx;
-	g->win.img = record->data->mlx->img;
-	g->frame.img = g->frame.img;
+	g->mlx = record->data->mlx->mlx;
+	g->win.img = record->data->mlx->win;
+	g->frame.img = record->data->mlx->img;
 	// g->frame.img = mlx_new_image(g->mlx, g->win.width, g->win.height);
 	// g->frame.addr = mlx_get_data_addr(g->frame.img, &g->frame.bits_per_pixel,
 	// 		&g->frame.line_length, &g->frame.endian);
@@ -116,8 +116,8 @@ int	cub_render(t_book *record)
 		g->start_time = clock();
 	}
 	update(record);
-	// mlx_put_image_to_window(g->mlx, g->win.img, g->frame.img, 0, 0);
-	// mlx_destroy_image(g->mlx, g->frame.img);
+	mlx_put_image_to_window(g->mlx, g->win.img, g->frame.img, 0, 0);
+	mlx_destroy_image(g->mlx, g->frame.img);
 	// mlx_destroy_image(record->data->mlx->mlx, record->data->mlx->img);
 	return (RETURN_SUCCESS);
 }
