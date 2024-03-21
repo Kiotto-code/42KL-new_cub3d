@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 01:12:46 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/16 22:33:01 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/03/21 16:48:30 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	init_constants(t_data *data)
 }
 
 
-void init(t_data *data)
+void init(t_data *data, t_book *record)
 {
 	t_mlx		mlx;
 	t_keystate	keystate;
@@ -88,14 +88,57 @@ void init(t_data *data)
 	data->keystate = &keystate;
 	data->player = &player;
 	data->constant = &constant;
+	data->map = record->map;
+	
+	ft_print_arr(record->map, BRIGHT_PURPLE"check3: record->map"RESET);
+	ft_print_arr(data->map, BRIGHT_PURPLE"check3: data->map"RESET);
+	// pause();
 	// need parser to set height and width on the map
 	data->map_w = 11;
 	data->map_h = 11;
+	
+	ft_print_arr(data->map, BRIGHT_PURPLE"check3: data.map"RESET);
+	// pause();
 	
 	// init_player needs more changes
 	init_constants(data);
 	init_player_pos(data->map, &player, N); // need the parser to put which direction the player is at
 	init_mlx(&mlx);
 	init_keystate(&keystate);
-	hooking(&mlx, data);
+	hooking(&mlx, record);
+	(void)record;
 }
+
+// void init(t_data *data, t_book *record)
+// {
+// 	t_image		mlx;
+// 	t_keystate	keystate;
+// 	t_player	player;
+// 	t_ray		*ray;
+// 	t_constants constant;
+
+// 	// ft_print_arr(record->map, PURPLE"Check: "RESET);
+// 	// pause();
+// 	ray = malloc(sizeof(t_ray) * NUM_RAYS);
+// 	record->game->rays = ray;
+// 	record->data = data;
+// 	data->mlx = &mlx;
+// 	data->keystate = &keystate;
+// 	data->player = &player;
+// 	data->rays = ray;
+// 	data->constant = &constant;
+// 	data->map = record->map;
+// 	// ft_print_arr(data->map, PURPLE"Check: "RESET);
+// 	data->cell_size = CELL_SIZE;
+// 	// need parser to set height and width on the map
+// 	data->map_w = 11;
+// 	data->map_h = 11;
+	
+// 	// init_player needs more changes
+// 	init_constants(data);
+// 	init_player_pos(data->map, &player, 'N'); // need the parser to put which direction the player is at
+// 	init_mlx(&mlx);
+// 	game_mlx_init(&mlx, record);
+// 	init_keystate(&keystate);
+// 	hooking(&mlx, record);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 21:42:58 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/16 22:30:18 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/03/21 17:10:27 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	put_map(t_data *data)
 		while (data->map[y][x])
 		{
 			// add C for door
-			if (ft_strchr(data->map[y][x], "1"))
+			if (ft_strchr("1", data->map[y][x]))
 				color_sqr(data, x, y, 0x0);
-			else if (ft_strchr(data->map[y][x], "0"))
+			else if (ft_strchr("0", data->map[y][x]))
 				color_sqr(data, x, y, 0xd0d0d0);
 			x++;
 		}
@@ -100,6 +100,34 @@ void	put_map(t_data *data)
 	mlx_put_image_to_window(data->mlx->mlx,
 		data->mlx->win, data->mlx->img, 0, 0);
 }
+// void	put_map(t_data *data)
+// {
+// 	int	x;
+// 	int	y;
+	
+// 	if (data->keystate->space)
+// 		data->cell_size = WIN_W / 40; // how big the map will expand
+// 	else
+// 		data->cell_size = 10; // else map will be this big
+// 	y = 0;
+// 	while (data->map[y])
+// 	{
+// 		x = 0;
+// 		while (data->map[y][x])
+// 		{
+// 			// add C for door
+// 			if (ft_strchr3(data->map[y][x], "1"))
+// 				color_sqr(data, x, y, 0x0);
+// 			else if (ft_strchr3(data->map[y][x], "0"))
+// 				color_sqr(data, x, y, 0xd0d0d0);
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	// put_rays(data, (double)CELL_SIZE / data->cell_size);
+// 	mlx_put_image_to_window(data->mlx->mlx,
+// 		data->mlx->win, data->mlx->img, 0, 0);
+// }
 
 void drawing(t_data *data)
 {

@@ -17,6 +17,11 @@
 # include <stdbool.h>
 # include <stdint.h>
 
+#include "color.h"
+#include "enum.h"
+#include "macro.h"
+#include "libft/includes/libft.h"
+
 
 # define WIN_W 1080 // screen width
 # define WIN_H 520 // screen height
@@ -35,10 +40,10 @@
 // 	COS = 2,
 // 	TAN = 3
 // };
-# define ERROR "\033[1;31m"
-# define GREEN "\033[0;32m" 
-# define YELLOW "\033[0;33m"
-# define RESET "\033[0m"
+// # define ERROR "\033[1;31m"
+// # define GREEN "\033[0;32m" 
+// # define YELLOW "\033[0;33m"
+// # define RESET "\033[0m"
 
 enum
 {
@@ -155,6 +160,74 @@ typedef struct s_constants
 	float	tau;
 }	t_constants;
 
+typedef struct s_file
+{
+	char	*path;
+	int		fd;
+}	t_file;
+
+
+typedef struct s_map
+{
+	char	*meta_data[7]; //meta_data[0] = NO, meta_data[1] = SO, meta_data[2] = WE, meta_data[3] = EA, meta_data[4] = F, meta_data[5] = C
+	char	**arr;
+	int		width;
+	int		height;
+	int		px;
+	int		py;
+	int		pv;
+	int		f_color[3];
+	int		c_color[3]; //flr and cl are the same as int_f and int_c but in decimal
+	t_file	file;
+
+}	t_map;
+
+// typedef struct s_map
+// {
+// 	const char		*map_name;
+// 	int				fd;
+// 	char			**arr; //without the player
+// 	// int		**arr;
+// 	int				width;
+// 	int				height;
+// 	// int				map_h;
+// 	// int				map_w;
+// 	int				map_vh;
+// 	int				map_vw; //map_tab = map table, map_name = map name, map_h = map height, map_w = map width, map_vh = map virtual height, map_vw = map virtual width
+// 	int				pn;
+// 	int				px;
+// 	int				py; 
+// 	int				pv; //pn = player number, px = player x, py = player y, pv = player pov
+// 	char			*meta_data[7]; //meta_data[0] = NO, meta_data[1] = SO, meta_data[2] = WE, meta_data[3] = EA, meta_data[4] = F, meta_data[5] = C
+// 	int				f_color[3];
+// 	int				c_color[3]; //flr and cl are the same as int_f and int_c but in decimal
+// 	unsigned long	int_f;
+// 	unsigned long	int_c; //int_f and int_c are the same as flr and cl but in hex
+// }	t_map;
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
+
+typedef struct s_error
+{
+	char	*message;
+	int		code;
+}	t_error;
+
+typedef struct s_assets
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+	t_color	floor;
+	t_color	ceiling;
+}	t_assets;
+
 
 typedef struct s_data
 {
@@ -170,10 +243,54 @@ typedef struct s_data
 
 }	t_data;
 
+typedef struct s_window
+{
+	void	*img;
+	int		width;
+	int		height;
+}	t_window;
 
-// libft.c (tools for cub3d)
-int	ft_strchr(char c, char *s);
-int	ft_is_whitespace(int c);
+typedef struct s_game
+{
+	void		*mlx;
+	t_window	win;
+	t_map		map;
+	t_error		error;
+	// t_parsing	parsing;
+	t_assets	assets;
+	t_ray		*rays;
+	t_player	player;
+	t_mlx		frame;
+	clock_t		start_time;
+	float		delta_time;
+	bool		paused;
+	bool		freeze;
+	bool		game_over;
+	// t_alloc		allocated;
+	t_mlx		textures[4];
+	t_constants	constants;
+}	t_game;
+
+
+typedef struct s_book
+{
+	t_data			*data;
+	t_game			*game;
+	void			*win;//mlx_new_window
+	unsigned int	winfps;
+	const char		*file;//file_name
+	char			**file_content;
+	char			**elem_record;
+	char			**map;
+	t_coords		*winsize;		//dynamic allocation
+	t_map			*map_table;		//dynamic allocation
+	t_coords		line_initial;
+	int				line_steps;
+
+	
+	t_keystate			key;
+}	t_book;
+
 
 // test.c (for testing tools)
 char	**map_dup();
@@ -181,13 +298,28 @@ void print_img(t_data *data);
 void print_arr(char **arr);
 
 //init.c 
-void init(t_data *data);
+// void init(t_data *data);
+void init(t_data *data, t_book *record);
 
 //keyboard.c
-void	hooking(t_mlx *mlx, t_data *data);
+void	hooking(t_mlx *mlx, t_book *record);
 
 // drawing.c
 void drawing(t_data *data);
 
 // raycast.c
 void	raycast(t_data *data);
+bool	check_if_wall(int content);
+
+//map_validity.c
+int	map_reading(t_book *record);
+
+//map_find.c
+int file_data_recording(t_book *record);
+int	file_data_reading(t_book *record);
+
+//store.c
+int	get_colors(t_map *map);
+
+//movement.c
+int	player_movement(t_game *g);

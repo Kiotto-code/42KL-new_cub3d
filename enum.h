@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   enum.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 23:07:40 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/21 14:45:51 by yichan           ###   ########.fr       */
+/*   Created: 2024/03/17 20:16:59 by yichan            #+#    #+#             */
+/*   Updated: 2024/03/20 15:18:31 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
+#pragma once
+
+enum Status {
+  SUCCESS,
+  FAIL,
+};
+
+enum {
+	NO,
+	SO,
+	WE,
+	EA,
+	F,
+	C,
+	END,
+};
 
 
-// int	ft_is_whitespace(int c)
-// {
-// 	if (c == ' ' || c == '\t' || c == '\v'
-// 		|| c == '\n' || c == '\f' || c == '\r')
-// 		return (1);
-// 	return (0);
-// }
-
-// int	ft_strchr3(char c, char *s)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] == c)
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+// enum Status {
+//   SUCCESS,
+//   FAIL,
+// };
