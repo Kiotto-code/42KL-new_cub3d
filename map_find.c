@@ -56,6 +56,7 @@ int file_data_recording(t_book *record)
 	{
 		ft_replace_all(&(*elem), "\t", " ", 0);
 		split = ft_split(*elem, ' ');
+		printf("elem: %s\n", *elem);
 		if (ft_arrlen(split) != 2)
 			return (FAIL);
 		map->meta_data[END] = NULL;
@@ -72,7 +73,11 @@ int file_data_recording(t_book *record)
 		else if (ft_strcmp(split[0], "C") == SUCCESS)
 			map->meta_data[C] = ft_strdup(split[1]);
 		else
+		{
+			printf("ERROR meta_data[%d] : %s\n", i, split[0]);
+			free(split);
 			return (FAIL);
+		}
 		free(split);
 		elem++;
 	}
@@ -85,6 +90,7 @@ int file_data_recording(t_book *record)
 	// 	i++;
 	// }
 	ft_print_arr(map->meta_data, "meta_data");
+	// pause();
 	get_colors(record->map_table);
 	get_player_view(record, record->map_table);
 	return (SUCCESS);
@@ -103,7 +109,7 @@ int	check_map_holes(char **map)
 		str = map[i];
 		while (str[j])
 		{
-			if (ft_strchr("0NWSE", str[j]))
+			if (ft_strchr("0CNWSE", str[j]))
 			{
 				if (map[i+1] && map[i+1][j] == ' ')
 					return (FAIL);
@@ -122,6 +128,33 @@ int	check_map_holes(char **map)
 	return (SUCCESS);
 }
 
+static void	character_checking(char **map)
+{
+	int i;
+	int j;
+	char *str;
+
+	i = 0;
+	ft_print_arr(map, "map");
+	// pause();
+	while (map[i])
+	{
+		j = 0;
+		str = map[i];
+		while (str[j])
+		{
+			if (ft_strchr("01CNWSE ", str[j]) == NULL) //c == door
+			{
+				printf("i: %d, j: %d\n", i, j);
+				// printf("map[i]: %s\n", map[i]);
+				printf("str[j]: %c\n", str[j]);
+				ft_error("INVALID CHARACTER IN MAP", FAIL);
+			}
+			j++;
+		} 
+		i++;
+	}
+}
 
 int	file_data_reading(t_book *record)
 {
@@ -131,8 +164,10 @@ int	file_data_reading(t_book *record)
 
 	content = record->file_content;
 	i = 0;
+	// ft_replace_all(&(*elem), "\t", " ", 0);
 	while (content[i])
 	{
+		// ft_replace_all(&content[i], "\t", " ", 0);
 		if (content[i][0] == '1' || content[i][0] == ' ')
 			break ;
 		i++;
@@ -140,10 +175,15 @@ int	file_data_reading(t_book *record)
 			break ;
 	}
 	record->elem_record = ft_subarr(content, 0, i-1);
-	ft_print_arr(record->elem_record, "record->elem_record");
+	// ft_print_arr(record->elem_record , "record->elem_record ");
+	// ft_print_arr(record->file_content, "record->file_content");
+	// pause();
 	content += i;
 	record->map = ft_duparr(content);
-	ft_print_arr(record->map, "record->map");
+	// ft_print_arr(record->map, "record->map");
+	// pause();
+	character_checking(record->map);
+	// ft_print_arr(record->map, "record->map");
 	if (check_map_holes(record->map) == FAIL)
 		return (FAIL);
 	return (SUCCESS);

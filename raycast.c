@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 23:20:49 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/21 17:45:19 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/24 07:55:29 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,34 +124,34 @@ void	final_inters(t_data *data, int i)
 	}
 }
 
-void	raycast(t_data *data)
+void	raycast(t_data *data, t_game *g)
 {
 	t_coords	dist;
-	float		delta_depth;	
+	float		delta_depth;
 	float		ray_angle;
-	(void)dist;
-	(void)delta_depth;
-	int			i;
-	
-	ray_angle = data->player->angle - data->constant->half_fov + 0.0001;
-	i = -1;
-	while (++i < N_RAY) // there will be total of 1080 rays
-	{
-		data->rays[i].angle = ray_angle;
-		data->rays[i].sin_a = sin(ray_angle);
-		data->rays[i].cos_a = cos(ray_angle);
+	t_iterators	it;
 
-		printf(YELLOW);
-		printf("%i sin ray = %f", i , data->rays[i].sin_a);
-		printf("%i cos ray = %f", i , data->rays[i].cos_a);
-		printf(RESET);
-		
-		find_hor_steps(data, i, &dist, &delta_depth);
-		check_horz_inters(data, i, dist, delta_depth);
-		find_vert_steps(data, i, &dist, &delta_depth);
-		check_vert_inters(data, i, dist, delta_depth);
-		final_inters(data, i);
-		draw_walls(data, i, ray_angle);
-		ray_angle += data->constant->delta_angle; // each ray will add 0.0555555
+	g->player.map_pos.x = (int)(g->player.pos.x / TILE_SIZE);
+	g->player.map_pos.y = (int)(g->player.pos.y / TILE_SIZE);
+	printf("g->player.map_pos.x : %f\n", g->player.map_pos.x);
+	printf("g->player.map_pos.y : %f\n", g->player.map_pos.y);
+	// pause();
+	ray_angle = g->player.angle - g->constants.half_fov + 0.0001;
+	it.i = -1;
+	while (++it.i < NUM_RAYS)
+	{
+		printf("ray_angle = %f\n", ray_angle);
+		printf("it.i = %d\n", it.i);
+		g->rays[it.i].angle = ray_angle;
+		g->rays[it.i].sin_a = sin(ray_angle);
+		g->rays[it.i].cos_a = cos(ray_angle);
+		find_hor_steps(data, it.i, &dist, &delta_depth);
+		check_horz_inters(data, it.i, dist, delta_depth);
+		find_vert_steps(data, it.i, &dist, &delta_depth);
+		check_vert_inters(data, it.i, dist, delta_depth);
+		final_inters(data, it.i);
+		draw_walls(g, it, ray_angle);
+		ray_angle += g->constants.delta_angle;
 	}
+	// mlx_put_image_to_window(g->mlx, g->win.img, g->frame.img, 0, 0);
 }

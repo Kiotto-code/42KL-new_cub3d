@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:49:19 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/21 15:03:03 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/24 06:15:10 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	map_reading(t_book *record)
 	char	*fileline;
 
 	fd = open(record->file, O_RDONLY);
+	// ft_replace_all(&(*elem), "\t", " ", 0);
 	if (fd == -1)
 		return (ft_putendl_fd("failed open file", 2), FAIL);
 	fileline = ft_strdup("");

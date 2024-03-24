@@ -23,12 +23,15 @@
 #include "libft/includes/libft.h"
 
 
-# define WIN_W 1080 // screen width
-# define WIN_H 520 // screen height
-# define CELL_SIZE 500
+# define WIN_W 1600 // screen width
+# define WIN_H 900 // screen height
+// # define WIN_W 1080 // screen width
+// # define WIN_H 520 // screen height
+# define CELL_SIZE TILE_SIZE
+// # define CELL_SIZE 500
 # define RAY_ANGLE_DIFF 0.05555555555 // each ray distance within player pov (60 / 1080)
 # define MAX_DEPTH 100
-# define N_RAY 1080 // number of ray being casted
+# define N_RAY WIN_W // number of ray being casted
 # define N 0
 # define E 90
 # define S 180
@@ -56,6 +59,14 @@ enum
 	ARROW_RIGHT = 124,
 	SPACE = 49
 };
+
+typedef struct s_draw_walls
+{
+	int			i;
+	int			wall_top_pixel;
+	int			wall_bottom_pixel;
+	float		depth;
+}	t_draw_walls;
 
 typedef struct s_iterators
 {
@@ -124,10 +135,25 @@ typedef struct s_ray
 	float		proj_h;
 }	t_ray;
 
+// typedef struct s_player
+// {
+// 	t_coords	pos;
+// 	t_coords	map_pos;
+// 	int			width;
+// 	int			height;
+// 	float		angle;
+// 	float		speed;
+// 	float		rot_speed;
+// 	int			turn_direction;
+// 	int			walk_direction;
+// 	int			rotation_direction;
+// }	t_player;
+
 typedef struct s_player
 {
 	// actual player postion in pixel
 	t_coords	pos;
+	t_coords	map_pos;
 	// map player position
 	int			map_pos_x;
 	int			map_pos_y;
@@ -229,19 +255,20 @@ typedef struct s_assets
 }	t_assets;
 
 
-typedef struct s_data
-{
-	t_mlx			*mlx;
-	t_keystate		*keystate;
-	t_player		*player;
-	t_ray			*rays;
-	t_constants		*constant;
-	char			**map; // actual map
-	int				map_w; // set map height and width
-	int				map_h;
-	int				cell_size;
+// typedef struct s_data
+// {
+// 	t_mlx			*mlx;
+// 	t_keystate		*keystate;
+// 	t_player		*player;
+// 	t_ray			*rays;
+// 	t_constants		*constant;
+// 	t_game			*game;
+// 	char			**map; // actual map
+// 	int				map_w; // set map height and width
+// 	int				map_h;
+// 	int				cell_size;
 
-}	t_data;
+// }	t_data;
 
 typedef struct s_window
 {
@@ -271,21 +298,35 @@ typedef struct s_game
 	t_constants	constants;
 }	t_game;
 
+typedef struct s_data
+{
+	t_mlx			*mlx;
+	t_keystate		*keystate;
+	t_player		*player;
+	t_ray			*rays;
+	t_constants		*constant;
+	t_game			*game;
+	char			**map; // actual map
+	int				map_w; // set map height and width
+	int				map_h;
+	int				cell_size;
+
+}	t_data;
 
 typedef struct s_book
 {
 	t_data			*data;
 	t_game			*game;
-	void			*win;//mlx_new_window
-	unsigned int	winfps;
+	// void			*win;//mlx_new_window
+	// unsigned int	winfps;
 	const char		*file;//file_name
 	char			**file_content;
 	char			**elem_record;
 	char			**map;
 	t_coords		*winsize;		//dynamic allocation
 	t_map			*map_table;		//dynamic allocation
-	t_coords		line_initial;
-	int				line_steps;
+	// t_coords		line_initial;
+	// int				line_steps;
 
 	
 	t_keystate			key;
@@ -305,10 +346,12 @@ void init(t_data *data, t_book *record);
 void	hooking(t_mlx *mlx, t_book *record);
 
 // drawing.c
-void drawing(t_data *data);
+void	drawing(t_data *data);
+void	put_map(t_data *data);
+
 
 // raycast.c
-void	raycast(t_data *data);
+void	raycast(t_data *data, t_game *game);
 bool	check_if_wall(int content);
 
 //map_validity.c
@@ -328,7 +371,20 @@ int	player_movement(t_game *g);
 unsigned int	get_textcolor(t_game *g, int type, t_iterators text_offset);
 void			put_stripe(t_game *g, t_iterators it, t_iterators text_offset, int i);
 void			draw_stripe(t_game *g, t_iterators it, int wall_top, int wall_bottom);
-void			draw_walls(t_game *g, t_iterators it, float ray_angle);
+// void			draw_walls(t_game *data, t_iterators it, float ray_angle);
+void	draw_walls(t_game *g, t_iterators it, float ray_angle);
 
 ///cub_pixel_put.c
 void	cub_pixel_put(t_game *g, float x, float y, int color);
+int		create_rgb(t_color color);
+
+//cub_init.c
+int	cub_init(t_game *g);
+
+// cub_init.c
+int	cub_load_textures(t_game *g);
+int	cub_init_textures(t_game *g);
+int	cub_init(t_game *g);
+
+//hooking.c
+void	game_init(t_game *g, t_book *record);

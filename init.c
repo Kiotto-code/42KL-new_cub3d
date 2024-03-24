@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 01:12:46 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/21 16:48:30 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/24 07:45:58 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	init_player_pos(char **map, t_player *player, char pv)
 	else if (pv == 'W')
 		player->angle = M_PI;
 	// x and y cell sets where the player is inside the map
-	player->map_pos_x = 6;
-	player->map_pos_y = 6;
+	// player->map_pos_x = record->map_table->px;
+	// player->map_pos_y = record->map_table->py;
 	// sets the actual position by pixel of player
 	player->pos.x = (player->map_pos_x * CELL_SIZE) + (CELL_SIZE / 2);
 	player->pos.y = (player->map_pos_y * CELL_SIZE) + (CELL_SIZE / 2);
@@ -54,23 +54,25 @@ void	init_mlx(t_mlx *mlx)
 	mlx->img = mlx_new_image(mlx->mlx, WIN_W, WIN_H);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
 			&mlx->line_length, &mlx->endian);
+	// printf("mlx->line_length: %d\n", mlx->line_length);
+	// pause();
 }
 
-void	init_constants(t_data *data)
-{
-	// data->constants->frame_rate = 1000 / FPS;
-	data->constant->half_win_width = WIN_W / 2;
-	data->constant->half_win_height = WIN_H / 2;
-	data->constant->fov = 60 * (M_PI / 180); // fov is 60 degree in radian
-	data->constant->half_fov = data->constant->fov / 2;
-	data->constant->screen_dist = WIN_W / 2 / tan(data->constant->half_fov);
-	data->constant->num_rays = WIN_W; // 1080 of rays
-	data->constant->half_num_rays = data->constant->num_rays / 2;
-	data->constant->scale = WIN_W / data->constant->num_rays;
-	data->constant->delta_angle = data->constant->fov / data->constant->num_rays;
-	data->constant->player_rotation_speed = 90 * (M_PI / 180);
-	data->constant->tau = 2 * M_PI;
-}
+// void	init_constants(t_data *data)
+// {
+// 	data->constant->frame_rate = 1000 / FPS;
+// 	data->constant->half_win_width = WIN_W / 2;
+// 	data->constant->half_win_height = WIN_H / 2;
+// 	data->constant->fov = 60 * (M_PI / 180); // fov is 60 degree in radian
+// 	data->constant->half_fov = data->constant->fov / 2;
+// 	data->constant->screen_dist = WIN_W / 2 / tan(data->constant->half_fov);
+// 	data->constant->num_rays = WIN_W; // 1080 of rays
+// 	data->constant->half_num_rays = data->constant->num_rays / 2;
+// 	data->constant->scale = WIN_W / data->constant->num_rays;
+// 	data->constant->delta_angle = data->constant->fov / data->constant->num_rays;
+// 	data->constant->player_rotation_speed = 90 * (M_PI / 180);
+// 	data->constant->tau = 2 * M_PI;
+// }
 
 
 void init(t_data *data, t_book *record)
@@ -83,27 +85,24 @@ void init(t_data *data, t_book *record)
 
 	data->cell_size = CELL_SIZE;
 	data->mlx = &mlx;
-	ray = malloc(sizeof(t_ray) * N_RAY);
+	ray = malloc(sizeof(t_ray) * NUM_RAYS);
 	data->rays = ray;
 	data->keystate = &keystate;
 	data->player = &player;
 	data->constant = &constant;
+	data->game = record->game;
 	data->map = record->map;
-	
-	ft_print_arr(record->map, BRIGHT_PURPLE"check3: record->map"RESET);
-	ft_print_arr(data->map, BRIGHT_PURPLE"check3: data->map"RESET);
-	// pause();
-	// need parser to set height and width on the map
-	data->map_w = 11;
-	data->map_h = 11;
-	
-	ft_print_arr(data->map, BRIGHT_PURPLE"check3: data.map"RESET);
-	// pause();
+
+	player.map_pos_x = record->map_table->px;
+	player.map_pos_y = record->map_table->py;
 	
 	// init_player needs more changes
-	init_constants(data);
+	// init_constants(data);
 	init_player_pos(data->map, &player, N); // need the parser to put which direction the player is at
 	init_mlx(&mlx);
+	game_init(record->game, record);
+	if (cub_init(record->game))
+		ft_error("FAIL CUB_INIT", FAIL);
 	init_keystate(&keystate);
 	hooking(&mlx, record);
 	(void)record;
