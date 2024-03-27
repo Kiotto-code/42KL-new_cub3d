@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:15:59 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/24 08:52:04 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/25 22:14:00 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	player_movement(t_game *g)
 	g->player.angle += g->player.rot_speed * g->delta_time
 		* g->player.rotation_direction;
 	printf("g->player.rot_speed, g->delta_time, g->player.rotation_direction = %f, %f, %d\n", g->player.rot_speed, g->delta_time, g->player.rotation_direction);
-	// pause();
 	printf("g->constants.tau = %f\n", g->constants.tau);
 	g->player.angle = fmod(g->player.angle, g->constants.tau);
 	printf("g->player.angle = %f\n", g->player.angle);

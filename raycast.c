@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 23:20:49 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/24 07:55:29 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/25 22:10:48 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,18 +133,24 @@ void	raycast(t_data *data, t_game *g)
 
 	g->player.map_pos.x = (int)(g->player.pos.x / TILE_SIZE);
 	g->player.map_pos.y = (int)(g->player.pos.y / TILE_SIZE);
-	printf("g->player.map_pos.x : %f\n", g->player.map_pos.x);
-	printf("g->player.map_pos.y : %f\n", g->player.map_pos.y);
+	// printf("g->player.map_pos.x : %f\n", g->player.map_pos.x);
+	// printf("g->player.map_pos.y : %f\n", g->player.map_pos.y);
 	// pause();
 	ray_angle = g->player.angle - g->constants.half_fov + 0.0001;
 	it.i = -1;
 	while (++it.i < NUM_RAYS)
 	{
-		printf("ray_angle = %f\n", ray_angle);
-		printf("it.i = %d\n", it.i);
+		// printf("ray_angle = %f\n", ray_angle);
+		// printf("it.i = %d\n", it.i);
 		g->rays[it.i].angle = ray_angle;
 		g->rays[it.i].sin_a = sin(ray_angle);
 		g->rays[it.i].cos_a = cos(ray_angle);
+
+		// printf(YELLOW);
+		// printf("%i sin ray = %f", i , data->rays[i].sin_a);
+		// printf("%i cos ray = %f", i , data->rays[i].cos_a);
+		// printf(RESET);
+		
 		find_hor_steps(data, it.i, &dist, &delta_depth);
 		check_horz_inters(data, it.i, dist, delta_depth);
 		find_vert_steps(data, it.i, &dist, &delta_depth);

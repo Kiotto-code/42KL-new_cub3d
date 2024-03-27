@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 01:27:32 by etlaw             #+#    #+#             */
-/*   Updated: 2024/03/24 08:50:40 by yichan           ###   ########.fr       */
+/*   Updated: 2024/03/25 22:12:08 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,9 +164,9 @@ void	hooking(t_mlx *mlx, t_book *record)
 	t_data	*data;
 
 	data = record->data;
-	mlx_hook(mlx->win, DestroyNotify, NoEventMask, &shut_exit, record);
-	mlx_hook(mlx->win, KeyPress, NoEventMask, &keypress, data);
-	mlx_hook(mlx->win, KeyRelease, KeyPressMask, &keyrelease, data);
+	mlx_hook(mlx->win, DestroyNotify, 0L, &shut_exit, record);
+	mlx_hook(mlx->win, KeyPress, 0L, &keypress, data);
+	mlx_hook(mlx->win, KeyRelease, 0L, &keyrelease, data);
 	mlx_hook(mlx->win, 02, 00, &keypress, data);
 	mlx_hook(mlx->win, 03, 0L, &keyrelease, data);
 	mlx_loop_hook(mlx->mlx, &cub_render, record);
