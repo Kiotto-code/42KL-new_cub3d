@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:41 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/31 23:07:00 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/02 00:55:50 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_vector	normalize_vec(t_vector vec);
 t_vector	vector_add(t_vector first, t_vector second);
 t_vector	vector_multpl(t_vector first, t_vector second);
 t_vector	vector_substr(t_vector first, t_vector second);
-t_vector	rotatevectorlol(t_vector vct, double angle); //do not rename!!!!!!!
+t_vector	rotatevector(t_vector vct, double angle); //do not rename!!!!!!!
 
 /* raycasting */
 void		ray_the_caster(t_data *data);

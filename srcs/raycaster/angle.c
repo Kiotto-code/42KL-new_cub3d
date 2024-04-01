@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   angle.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:33 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/30 20:31:37 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/02 00:55:50 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double	get_next_angle(t_vector ini, t_player playa, int ray)
 	t_vector	curr;
 
 	first = vector_substr(ini, playa.pos);
-	dir = normalize_vec(rotatevectorlol(normalize_vec(playa.dir), 90));
+	dir = normalize_vec(rotatevector(normalize_vec(playa.dir), 90));
 	curr.x = ini.x + dir.x * (ray);
 	curr.y = ini.y + dir.y * (ray);
 	curr = vector_substr(curr, playa.pos);
@@ -43,7 +43,7 @@ t_vector	get_init_pos(t_player playa)
 	double		dtamp;
 
 	tamp = normalize_vec(playa.dir);
-	dir = rotatevectorlol(tamp, -90);
+	dir = rotatevector(tamp, -90);
 	dtamp = (SCREEN_WIDTH / 2) / tan((FOV / 2) * (M_PI / 180));
 	tamp.x *= dtamp;
 	tamp.y *= dtamp;

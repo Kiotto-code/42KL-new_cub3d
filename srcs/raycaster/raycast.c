@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:53:53 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 21:43:59 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 00:55:50 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	ray_the_caster(t_data *data)
 	while (draw.x < RAY_COUNT)
 	{
 		data->door_state = 0;
-		tmp = rotatevectorlol(vector_substr(init_pos, data->player.pos), \
+		tmp = rotatevector(vector_substr(init_pos, data->player.pos), \
 							get_next_angle(init_pos, data->player, draw.x));
 		single_ray(data, tmp);
 		if (draw.x != RAY_COUNT / 2)

@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:38:38 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 22:12:10 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 00:55:50 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,17 @@ void	move(t_data *data, int movement)
 		vector_substr(data->player.pos, data->player.dir)))
 		data->player.pos = vector_substr(data->player.pos, temp);
 	else if (movement & RIGHT && !is_wall(data, \
-		vector_add(data->player.pos, rotatevectorlol(data->player.dir, 90))))
+		vector_add(data->player.pos, rotatevector(data->player.dir, 90))))
 		data->player.pos = vector_add(data->player.pos, \
-								rotatevectorlol(temp, 90));
+								rotatevector(temp, 90));
 	else if (movement & LEFT && !is_wall(data, vector_substr(data->player.pos, \
-									rotatevectorlol(data->player.dir, 90))))
+									rotatevector(data->player.dir, 90))))
 		data->player.pos = vector_substr(data->player.pos, \
-									rotatevectorlol(temp, 90));
+									rotatevector(temp, 90));
 	if (movement & TURN_LEFT)
-		data->player.dir = rotatevectorlol(data->player.dir, -ROTATE * 50);
+		data->player.dir = rotatevector(data->player.dir, -ROTATE * 50);
 	if (movement & TURN_RIGHT)
-		data->player.dir = rotatevectorlol(data->player.dir, ROTATE * 50);
+		data->player.dir = rotatevector(data->player.dir, ROTATE * 50);
 }
 
 void	check_mouse_movement(t_data *data)
@@ -100,10 +100,10 @@ void	check_mouse_movement(t_data *data)
 
 	mlx_mouse_get_pos(data->win, &mouse.x, &mouse.y);
 	if (mouse.x < data->mid_canvas.x)
-		data->player.dir = rotatevectorlol(data->player.dir, \
+		data->player.dir = rotatevector(data->player.dir, \
 							(data->mid_canvas.x - mouse.x) * -ROTATE);
 	else if (mouse.x > data->mid_canvas.x)
-		data->player.dir = rotatevectorlol(data->player.dir, \
+		data->player.dir = rotatevector(data->player.dir, \
 							(mouse.x - data->mid_canvas.x) * ROTATE);
 	mlx_mouse_move(data->win, data->mid_canvas.x, data->mid_canvas.y);
 }

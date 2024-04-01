@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vectors.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:01 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/31 11:18:02 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/02 00:55:50 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_vector	vector_multpl(t_vector first, t_vector second)
 	return (vector);
 }
 
-t_vector	rotatevectorlol(t_vector vct, double angle)
+t_vector	rotatevector(t_vector vct, double angle)
 {
 	t_vector	tmp;
 
