@@ -1,104 +1,55 @@
-# # **************************************************************************** #
-# #                                                                              #
-# #                                                         :::      ::::::::    #
-# #    Makefile                                           :+:      :+:    :+:    #
-# #                                                     +:+ +:+         +:+      #
-# #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
-# #                                                 +#+#+#+#+#+   +#+            #
-# #    Created: 2024/03/08 21:38:41 by etlaw             #+#    #+#              #
-# #    Updated: 2024/03/20 15:22:49 by yichan           ###   ########.fr        #
-# #                                                                              #
-# # **************************************************************************** #
-
-# NAME = cub3d
-
-# CC = cc
-# CFLAGS = -Wall -Wextra -Werror -I -g3 
-# LDFLAGS = -fsanitize=address -g3
-# MLX = -I /usr/X11/include -g -L /usr/local/lib -l mlx -framework OpenGL -framework AppKit
-
-# OBJS = obj/init.o \
-# 	   obj/main.o \
-# 	   obj/hooking.o \
-# 	   obj/test.o \
-# 	   obj/drawing.o \
-# 	   obj/libft.o \
-# 	   obj/raycast.o \
-
-# all: $(NAME)
-
-# re: fclean all
- 
-# $(NAME): $(OBJS)
-# 	$(CC) $(OBJS) -o $(NAME) $(CFLAGS) $(MLX) $(LDFLAGS)
-
-# obj:
-# 	mkdir obj
-
-# obj/%.o: ./%.c | obj
-# 	$(CC) -c $< -o $@ $(CFLAGS)
-
-# clean:
-# 	rm -rf obj
-
-# fclean: clean
-# 	rm -f $(NAME)
-
-# .PHONY: all re clean fclean
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/30 15:16:52 by yichan            #+#    #+#              #
+#    Updated: 2024/03/31 12:49:48 by yichan           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = cub3d
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g3
 CFLAGS += -fsanitize=address -g3
-MLX = -I /usr/X11/include -g -L /usr/local/lib -l mlx -framework OpenGL -framework AppKit
-LIBFT_PATH = ./libft
+# CFLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
+MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
+# MLXFLAGS = -I /usr/X11/include -g -L /usr/local/lib -l mlx -framework OpenGL -framework AppKit
+# SRCS_PATH	= ./srcs
+SRCS_PATH	= ./srcs/**
+OBJS_PATH	= ./objs
+LIBFT_PATH	= ./libft
 
-# OBJS = obj/init.o \
-# 	   obj/main.o \
-# 	   obj/hooking.o \
-# 	   obj/test.o \
-# 	   obj/drawing.o \
-# 	   obj/libft.o \
-# 	   obj/raycast.o \
+SRCS 		= $(shell find ./srcs -name "*.c")
+# OBJS		= ${patsubst ${SRCS_PATH}/%.c, ${OBJS_PATH}/%.o, ${SRCS}}
+OBJS 		= $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
+# OBJS		= ${patsubst %.c, ${OBJS_PATH}/%.o, ${notdir ${SRCS}}}
+# OBJS		= ${patsubst %.c, ${OBJS_PATH}/%.o,  ${SRCS}}
 
-SRCS = $(wildcard *.c)
-OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# all: $(NAME)
-# 		make -C ${LIBFT_PATH}
-
-# re: fclean all
-
-# $(NAME): $(OBJS)
-# 	$(CC) $(OBJS) -o $(NAME) $(CFLAGS) $(MLX) $(LDFLAGS) -L${LIBFT_PATH} -lft
-
-# obj:
-# 	mkdir obj
-
-# obj/%.o: ./%.c | obj
-# 	$(CC) -c $< -o $@ $(CFLAGS)
-
-# clean:
-# 	rm -rf obj
-
-# fclean: clean
-# 	${MAKE} -C ${LIBFT_PATH} $@
-# 	rm -f $(NAME)
-
-# .PHONY: all re clean fclean
+RESET		=	\033[0m
+GREEN		=	\033[38;5;46m
+WHITE		=	\033[38;5;15m
+GREY		=	\033[38;5;8m
+ORANGE		=	\033[38;5;202m
+RED			=	\033[38;5;160m
 
 all			:	${NAME}
 
 ${NAME}		:	${OBJS}
 				make -C ${LIBFT_PATH}
-				${MLX_MAKE}
-				$(CC) ${CFLAGS} ${MLXFLAGS} $^  -lft -L${LIBFT_PATH} ${MLX} -o $@
+				$(CC) ${CFLAGS} ${MLXFLAGS} $^  -lft -L${LIBFT_PATH} -o $@
 				@echo "The program name is $(RED)./$(NAME) $(RESET)"
 
-${OBJS_PATH}/%.o:	${SRCS_PATH}/%.c ./includes/*.h ./Makefile 
-					@mkdir -p $(@D)
+${OBJS_PATH}/%.o:	${SRCS_PATH}/%.c ./includes/*.h ./Makefile | ${OBJS_PATH}
 					${CC} ${CFLAGS} ${MLXFLAGS2} -c $< -o $@
+					@echo "The program name is $(GREEN)./$(NAME) $(RESET)"
+
+$(OBJS_PATH)			:
+							mkdir -p $(OBJS_PATH)
 						
 clean		:
 				${MAKE} -C ${LIBFT_PATH} $@
