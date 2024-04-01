@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 21:53:03 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/01 22:11:29 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@
 #  define S_KEY 1
 #  define D_KEY 2
 #  define E_KEY 14
+#  define Q_KEY 12
 
 # endif
 

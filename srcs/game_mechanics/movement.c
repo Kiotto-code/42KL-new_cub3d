@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:38:38 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 21:58:23 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/01 22:12:10 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,10 @@ void	check_mouse_movement(t_data *data)
 
 int	move_on_press(int keycode, t_data *data)
 {
-	if (keycode == SPACE)
-		// pause_game(data);
+	if (keycode == Q_KEY)
 		data->expand = 1;
+	if (keycode == SPACE)
+		pause_game(data);
 	if (keycode == E_KEY)
 		open_close_door(data, &data->player);
 	if (keycode == ESC)
@@ -134,7 +135,7 @@ int	move_on_press(int keycode, t_data *data)
 
 int	move_on_release(int keycode, t_data *data)
 {
-	if (keycode == SPACE)
+	if (keycode == Q_KEY)
 		data->expand = 0;
 	else if (keycode == W_KEY)
 		data->player.movement = data->player.movement & ~UP;
