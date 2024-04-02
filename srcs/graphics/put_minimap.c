@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 19:04:15 by etlaw             #+#    #+#             */
-/*   Updated: 2024/04/01 21:56:30 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 22:46:19 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,8 @@ void	put_minimap(t_data *data)
 {
 	int	x;
 	int	y;
-	
-	if (data->expand == 1)
-		data->cell_size = SCREEN_WIDTH / 40; // how big the minimap will expand
-	else
-		data->cell_size = 10; // else minimap will be this big
+
+	data->cell_size = 10;
 	y = 0;
 	while (data->map[y])
 	{
@@ -95,7 +92,6 @@ void	put_minimap(t_data *data)
 				color_sqr(data, x, y, 0xff0000);
 			else if (strchr_v2(data->map[y][x], "O"))
 				color_sqr(data, x, y, 0x5beb34);
-				
 			x++;
 		}
 		y++;

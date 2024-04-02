@@ -3,16 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:38:44 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/28 16:38:45 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/02 22:56:33 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../../includes/cub3d.h"
+
+unsigned int	convert_endian(unsigned int color)
+{
+	t_rgba	tmp;
+	t_rgba	new;
+
+	tmp.rgba = color;
+	new = (t_rgba){.b = tmp.a, .g = tmp.r, .r = tmp.g, .a = tmp.b};
+	return (new.rgba);
+}
 
 void	my_mlx_pixel_put(t_texture *data, int x, int y, int color)
 {

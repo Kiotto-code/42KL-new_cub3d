@@ -6,11 +6,9 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:38:48 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 21:42:36 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 22:46:48 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../../includes/cub3d.h"
 
@@ -50,7 +48,7 @@ static void	draw_wall(t_data *data, t_texture *texture, t_intvector *draw)
 	img.x = get_column(&data->wall, texture);
 	while (i < data->wall.height)
 	{
-		if (draw->y < SCREEN_HEIGHT && draw->x < SCREEN_WIDTH )
+		if (draw->y < SCREEN_HEIGHT && draw->x < SCREEN_WIDTH)
 			my_mlx_pixel_put(&data->canvas, draw->x, draw->y, \
 			my_mlx_pixel_get(texture, img.x, i * multiplier));
 		i++;

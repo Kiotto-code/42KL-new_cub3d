@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 22:11:29 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 22:58:12 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,8 +261,8 @@ bool		is_space_or_1(char c);
 bool		is_valid_char(char c);
 bool		is_player(t_data *data, t_player *player, int x, int y);
 void		fill_str(char *str, size_t start, size_t end, char c);
-int		count_newlines_end(char *file);
-int		count_newlines_start(char *file);
+int			count_newlines_end(char *file);
+int			count_newlines_start(char *file);
 
 /* graphics */
 void		draw_vertical_line(t_data *data, t_texture *texture, \
@@ -271,6 +271,7 @@ void		draw_textures(t_data *data);
 void		init_texture(t_data *data, t_texture *texture, char *path);
 void		init_image(t_data *data, t_img *img);
 void		my_mlx_pixel_put(t_texture *data, int x, int y, int color);
+uint32_t	convert_endian(unsigned int color);
 uint32_t	my_mlx_pixel_get(t_texture *texture, int x, int y);
 void		put_minimap(t_data *data);
 void		init_gun(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:38:29 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 22:16:58 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 22:37:57 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ bool	ray_wall(t_data *data, t_vector pos)
 		x = 0;
 	if (y < 0)
 		y = 0;
-
-
 	if (ft_strchr("1", data->map[x][y]))
 		return (true);
 	else if (ft_strchr("0", data->map[x][y]))
@@ -39,7 +37,7 @@ bool	ray_wall(t_data *data, t_vector pos)
 	return (true);
 }
 
-void print_credits()
+void	print_credits(void)
 {
 	printf(RED);
 	printf("   ___      _    _____     _ \n");
@@ -80,16 +78,16 @@ int	game_loop(void *data2)
 		mlx_do_key_autorepeaton(data->mlx);
 		move(data, data->player.movement);
 		ray_the_caster(data);
-		put_minimap(data); // put minimap here
+		put_minimap(data);
 		mlx_put_image_to_window(data->mlx, data->win, \
 							data->canvas.img->ptr, 0, 0);
 		put_cursur(data);
-		put_gun(data); // put gun here
+		put_gun(data);
 		check_mouse_movement(data);
 		mlx_hook(data->win, KEY_PRESS, KeyPressMask, move_on_press, data);
 		mlx_hook(data->win, KEY_RELEASE, KeyPressMask, move_on_release, data);
 		mlx_hook(data->win, RED_CROSS, 0, x_close, data);
-		mlx_hook(data->win, 04, 0L, &left_press, data); // added left click to shoot
+		mlx_hook(data->win, 04, 0L, &left_press, data);
 		mlx_hook(data->win, 05, 0L, &left_release, data);
 	}
 	return (0);
