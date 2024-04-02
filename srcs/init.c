@@ -6,11 +6,9 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:38 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 21:53:58 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 23:09:50 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../includes/cub3d.h"
 
@@ -43,7 +41,7 @@ void	init_image(t_data *data, t_img *img)
 		errno(IMG_FAIL, "canvas", data);
 	img->data = mlx_get_data_addr(img->ptr,
 			&img->bpp, &img->size_l, &img->endian);
-		data->img = img;
+	data->img = img;
 }
 
 void	init_texture(t_data *data, t_texture *texture, char *path)

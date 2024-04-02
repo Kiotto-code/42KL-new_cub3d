@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:33 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/31 12:51:57 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/02 23:10:17 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../includes/cub3d.h"
 
@@ -33,18 +31,16 @@ void	free_texture(t_texture *texture)
 
 void	free_1_texture(t_texture *texture)
 {
-		if (texture->img->ptr)
-			free(texture->img->ptr);
-		if (texture->img->data)
-			free(texture->img->data);
-		if (texture->img)
-			free(texture->img);
+	if (texture->img->ptr)
+		free(texture->img->ptr);
+	if (texture->img->data)
+		free(texture->img->data);
+	if (texture->img)
+		free(texture->img);
 }
 
 void	free_data(t_data *data)
 {
-	// if (data->mlx)
-	// 	free(data->mlx);
 	if (data->win)
 		free(data->win);
 	if (data->map)
@@ -54,11 +50,8 @@ void	free_data(t_data *data)
 	free_1_texture(&data->open_door);
 	free_1_texture(&data->close_door);
 	free_1_texture(&data->canvas);
-
 	if (data->floor)
 		free(data->floor);
 	if (data->ceiling)
 		free(data->ceiling);
-	// if (data->cursur.img->ptr)
-	// 	free(data->cursur.img->ptr);
 }

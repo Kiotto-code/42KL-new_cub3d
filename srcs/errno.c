@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   errno.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:30 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/29 15:23:50 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/02 23:10:25 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../includes/cub3d.h"
 
-/** 
- * @brief Writes an error message to STDERR.
- * You can add an additional message, otherwise add "" as 2nd argument.
- * @param nbr Signifies with error message from the array to be used.
- * @param msg additional message after the error message.
- */
 void	errno(int8_t nbr, char *msg, t_data *data)
 {
 	static const char	*errors[] = {

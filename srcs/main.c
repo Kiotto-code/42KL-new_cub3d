@@ -6,15 +6,11 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:43 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 21:49:52 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/02 23:09:02 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../includes/cub3d.h"
-
-
 
 int	main(int argc, char *argv[])
 {
