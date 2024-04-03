@@ -6,11 +6,9 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:18 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/29 16:15:55 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/03 10:42:37 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../../includes/cub3d.h"
 
@@ -23,7 +21,7 @@
  */
 char	*read_file(int fd)
 {
-	int	buflen;
+	int		buflen;
 	char	*line;
 	char	*buf;
 

@@ -6,11 +6,9 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:22 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/28 16:40:22 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/03 10:44:40 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../../includes/cub3d.h"
 
@@ -30,7 +28,7 @@ void	fill_str(char *str, size_t start, size_t end, char c)
  */
 int	count_newlines_end(char *file)
 {
-	int	i;
+	int		i;
 	size_t	count;
 
 	count = 0;

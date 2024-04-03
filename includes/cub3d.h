@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/02 22:58:12 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/03 10:49:00 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,8 @@ typedef union s_colour
 
 typedef union s_rgba
 {
-	unsigned int 	rgba;
-	struct 
+	unsigned int	rgba;
+	struct
 	{
 		unsigned char	b;
 		unsigned char	g;
@@ -189,8 +189,8 @@ typedef struct s_player
 typedef struct s_texture
 {
 	t_img	*img;
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 }	t_texture;
 
 typedef struct s_ratio
@@ -203,7 +203,7 @@ typedef struct s_wall
 {
 	t_vector	pos;
 	double		distance;
-	int		direction;
+	int			direction;
 	uint32_t	height;
 	uint32_t	offset;
 }	t_wall;
@@ -275,12 +275,15 @@ uint32_t	convert_endian(unsigned int color);
 uint32_t	my_mlx_pixel_get(t_texture *texture, int x, int y);
 void		put_minimap(t_data *data);
 void		init_gun(t_data *data);
-void 		put_gun(t_data *data);
+void		put_gun(t_data *data);
+void		put_cursur(t_data *data);
 int			left_press(int keycode, int x, int y, t_data *data);
 int			left_release(int keycode, int x, int y, t_data *data);
 
 //cursur.c
 void		put_cursur(t_data *data);
+t_texture	resize_image(t_texture *original_texture, \
+	int new_width, int new_height);
 
 //free.c
 void		free_1_texture(t_texture *texture);

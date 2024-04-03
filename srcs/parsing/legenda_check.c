@@ -6,11 +6,9 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:14 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/30 22:01:35 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/03 10:44:20 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../../includes/cub3d.h"
 
@@ -51,14 +49,13 @@ static bool	is_valid_colour(char *colour_str, char **channels)
  */
 static void	extract_colour(t_data *data, char *colour_str, t_colour *colour)
 {
-	int	i;
-	int	j;
-	int	colour_int;
+	int		i;
+	int		j;
+	int		colour_int;
 	char	**channels;
 
 	i = 2;
 	j = 0;
-
 	channels = ft_split(colour_str, ',');
 	if (!is_valid_colour(colour_str, channels))
 		errno(COLOUR, "", data);
@@ -73,7 +70,6 @@ static void	extract_colour(t_data *data, char *colour_str, t_colour *colour)
 		j++;
 	}
 	free_2d(channels);
-	// free_2d_arr(&channels);
 }
 
 static void	legenda_check(t_data *data, char *word, char *path)
@@ -98,9 +94,6 @@ static void	legenda_check(t_data *data, char *word, char *path)
 		init_texture(data, &data->texture[EAST], path);
 	else
 		errno(INV_CHAR, "", data);
-	// printf("word: %s, path: %s\n", word, path);
-	// init_texture(data, &data->texture[EAST], path);
-	// init_texture(data, &data->cursur, CURSUR_PATH);
 }
 
 void	element_check(t_data *data, char **file)

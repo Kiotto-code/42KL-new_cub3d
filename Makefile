@@ -6,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 15:16:52 by yichan            #+#    #+#              #
-#    Updated: 2024/03/31 12:49:48 by yichan           ###   ########.fr        #
+#    Updated: 2024/04/03 10:50:45 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ RED			=	\033[38;5;160m
 all			:	${NAME}
 
 ${NAME}		:	${OBJS}
+				make -C mlx
 				make -C ${LIBFT_PATH}
 				$(CC) ${CFLAGS} ${MLXFLAGS} $^  -lft -L${LIBFT_PATH} -o $@
 				@echo "The program name is $(RED)./$(NAME) $(RESET)"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_gun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 23:19:58 by etlaw             #+#    #+#             */
-/*   Updated: 2024/04/01 22:17:48 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/03 10:22:06 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,34 @@ int	left_release(int keycode, int x, int y, t_data *data)
 	return (0);
 }
 
-void put_gun(t_data *data)
+void	put_gun(t_data *data)
 {
+	static float	i;
 	void			*img;
 	int				x;
 	int				y;
-	float	static 	i;
-	
+
 	img = mlx_xpm_file_to_image(data->mlx, data->gun[0], &x, &y);
 	if (data->shoot == 0)
 		mlx_put_image_to_window(data->mlx, data->win,
-			img, (SCREEN_WIDTH / 2) - 70 , SCREEN_HEIGHT - 128);
+			img, (SCREEN_WIDTH / 2) - 70, SCREEN_HEIGHT - 128);
 	else if (data->shoot == 1)
 	{
 		img = mlx_xpm_file_to_image(data->mlx, data->gun[(int)i], &x, &y);
 		mlx_put_image_to_window(data->mlx, data->win,
-			img, (SCREEN_WIDTH / 2) - 70 , SCREEN_HEIGHT - 128);
+			img, (SCREEN_WIDTH / 2) - 70, SCREEN_HEIGHT - 128);
 		i += 0.5;
 	}
 	if (i >= 4)
 		i = 0;
 }
 
- 
+void	put_cursur(t_data *data)
+{
+	t_texture	resized_img;
+
+	resized_img = resize_image(&data->cursur, CURSOR_SIZE, CURSOR_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, resized_img.img->ptr, \
+		(SCREEN_WIDTH - CURSOR_SIZE) / 2, (SCREEN_HEIGHT - CURSOR_SIZE) / 2);
+	free_1_texture(&resized_img);
+}

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   edgecases.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:52 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/01 21:43:04 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/03 10:40:21 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	end_condition(t_data *data, t_vector vector)
+{
+	if (vector.x < 0 || vector.y < 0 || vector.x > (data->map_width * TILE)
+		|| vector.y > (data->map_height * TILE))
+		return (OUT_BOUNDS);
+	return (ray_wall(data, vector));
+}
 
 t_vector	cond_horiz_zero(t_data *data, t_vecstack vec,
 			t_vector dir, double ratio)

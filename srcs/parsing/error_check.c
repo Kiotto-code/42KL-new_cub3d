@@ -6,11 +6,9 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:06 by yichan            #+#    #+#             */
-/*   Updated: 2024/03/30 20:06:17 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/03 10:41:39 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../../includes/cub3d.h"
 
@@ -31,7 +29,7 @@ static void	extension_check(t_data *data, char *map_name, char *ext)
 
 void	error_check(t_data *data, int argc, char **argv)
 {
-	int	fd;
+	int		fd;
 	char	*file;
 	char	*tempfile;
 
@@ -46,8 +44,6 @@ void	error_check(t_data *data, int argc, char **argv)
 	file = read_file(fd);
 	tempfile = file;
 	element_check(data, &file);
-	// ft_printf("file checked: %s\n\n", file);
-	// pause();
 	extract_map(data, file);
 	free(tempfile);
 }
