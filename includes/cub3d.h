@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/03 23:57:59 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/04 00:10:39 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 # define TURN_RIGHT 32
 
 # define CURSUR_PATH "textures/seal.xpm"
-# define C_DOOR_PATH "textures/1.xpm"
+# define C_DOOR_PATH 
 # define O_DOOR_PATH
 
 # define SPEED 0.5
