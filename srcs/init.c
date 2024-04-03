@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:38 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/02 23:09:50 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/03 23:56:44 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init(t_data *data)
 	data->close_door.img = ft_calloc(1, sizeof(t_img));
 	data->canvas.img = ft_calloc(1, sizeof(t_img));
 	init_texture(data, &data->cursur, CURSUR_PATH);
-	init_texture(data, &data->open_door, O_DOOR_PATH);
+	// init_texture(data, &data->open_door, O_DOOR_PATH);
 	init_texture(data, &data->close_door, C_DOOR_PATH);
 }
 

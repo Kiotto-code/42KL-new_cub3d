@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:53:53 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/03 10:47:00 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/03 21:58:32 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,18 @@ double	vertical_raycast(t_data *data, t_vector direction)
 void	single_ray(t_data *data, t_vector direction)
 {
 	double	horizontal_dist;
-	double	vertikal_dist;
+	double	vertical_dist;
 	double	actual_dist;
 
-	vertikal_dist = vertical_raycast(data, direction);
+	vertical_dist = vertical_raycast(data, direction);
 	horizontal_dist = horizontal_raycast(data, direction);
-	if (horizontal_dist > vertikal_dist)
+	if (horizontal_dist > vertical_dist)
 	{
 		if (direction.x < 0)
 			data->wall.direction = WEST;
 		else
 			data->wall.direction = EAST;
-		actual_dist = vertikal_dist;
+		actual_dist = vertical_dist;
 	}
 	else
 	{

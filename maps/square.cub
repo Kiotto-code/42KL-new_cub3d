@@ -1,7 +1,7 @@
-WE ./textures/12.xpm
-EA ./textures/11.xpm
-NO ./textures/13.xpm
-SO ./textures/14.xpm
+WE ./textures/wall_1.xpm
+EA ./textures/wall_2.xpm
+NO ./textures/wall_3.xpm
+SO ./textures/wall_4.xpm
 
 C 0,0,0
 F 0,0,0

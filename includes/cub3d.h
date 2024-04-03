@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/03 10:49:00 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/03 23:57:59 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@
 # define TURN_RIGHT 32
 
 # define CURSUR_PATH "textures/seal.xpm"
-# define C_DOOR_PATH "textures/4.xpm"
-# define O_DOOR_PATH "textures/green_trans.xpm"
+# define C_DOOR_PATH "textures/1.xpm"
+# define O_DOOR_PATH
 
 # define SPEED 0.5
 # define ROTATE 0.15
