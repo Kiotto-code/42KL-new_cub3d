@@ -1,7 +1,7 @@
-WE ./textures/12.xpm
-EA ./textures/11.xpm
-NO ./textures/13.xpm
-SO ./textures/14.xpm
+WE ./textures/frieren_3_(1).xpm
+EA ./textures/frieren_3_(1).xpm
+NO ./textures/frieren_3_(1).xpm
+SO ./textures/frieren_3_(1).xpm
 
 C 0,0,0
 F 0,0,0
