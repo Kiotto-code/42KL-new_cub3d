@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:30 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/02 23:10:25 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/05 21:25:30 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void	errno(int8_t nbr, char *msg, t_data *data)
 		"Contains invalid characters",
 		"Wrong file extension",
 		"The map must be closed/surrounded by walls",
-		"Invalid texture: ",
-		"Creating image failed: ",
+		"Invalid texture",
+		"Creating image failed",
 		"Too many players",
 		"Map doesn't contain a player"
 	};
 
-	ft_printf("Error\n%s%s", errors[nbr], msg);
+	(void)msg;
+	ft_printf("Error: %s\n", errors[nbr]);
 	free_data(data);
 	exit(nbr);
 }

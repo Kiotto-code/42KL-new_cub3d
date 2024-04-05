@@ -6,7 +6,7 @@
 #    By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 15:16:52 by yichan            #+#    #+#              #
-#    Updated: 2024/04/05 20:34:51 by etlaw            ###   ########.fr        #
+#    Updated: 2024/04/05 21:17:05 by etlaw            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ CFLAGS = -Wall -Wextra -Werror -g3
 CFLAGS += -fsanitize=address -g3
 # CFLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
-# MLXFLAGS = -I /usr/X11/include -g -L /usr/local/lib -l mlx -framework OpenGL -framework AppKit
-# SRCS_PATH	= ./srcs
 SRCS_PATH	= ./srcs/**
 OBJS_PATH	= ./objs
 LIBFT_PATH	= ./libft

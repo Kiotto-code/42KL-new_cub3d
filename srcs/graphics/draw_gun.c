@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_gun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 23:19:58 by etlaw             #+#    #+#             */
-/*   Updated: 2024/04/03 10:22:06 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/05 21:16:00 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void	put_gun(t_data *data)
 
 	img = mlx_xpm_file_to_image(data->mlx, data->gun[0], &x, &y);
 	if (data->shoot == 0)
+	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			img, (SCREEN_WIDTH / 2) - 70, SCREEN_HEIGHT - 128);
+		printf("default\n");
+	}
 	else if (data->shoot == 1)
 	{
 		img = mlx_xpm_file_to_image(data->mlx, data->gun[(int)i], &x, &y);
