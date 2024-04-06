@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 23:19:58 by etlaw             #+#    #+#             */
-/*   Updated: 2024/04/05 21:16:00 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/06 18:49:18 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 void	init_gun(t_data *data)
 {
+	int	x;
+	int	y;
+
 	data->gun[0] = "./textures/gun/gun_1.xpm";
 	data->gun[1] = "./textures/gun/gun_2.xpm";
 	data->gun[2] = "./textures/gun/gun_3.xpm";
 	data->gun[3] = "./textures/gun/gun_4.xpm";
+	data->gun_img[0] = mlx_xpm_file_to_image(data->mlx, data->gun[0], &x, &y);
+	data->gun_img[1] = mlx_xpm_file_to_image(data->mlx, data->gun[0], &x, &y);
+	data->gun_img[2] = mlx_xpm_file_to_image(data->mlx, data->gun[0], &x, &y);
+	data->gun_img[3] = mlx_xpm_file_to_image(data->mlx, data->gun[0], &x, &y);
 }
 
 int	left_press(int keycode, int x, int y, t_data *data)
@@ -45,21 +52,23 @@ void	put_gun(t_data *data)
 	int				x;
 	int				y;
 
-	img = mlx_xpm_file_to_image(data->mlx, data->gun[0], &x, &y);
 	if (data->shoot == 0)
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
-			img, (SCREEN_WIDTH / 2) - 70, SCREEN_HEIGHT - 128);
-		printf("default\n");
+			data->gun_img[0], (SCREEN_WIDTH / 2) - 70, SCREEN_HEIGHT - 128);
 	}
 	else if (data->shoot == 1)
 	{
+		// mlx_put_image_to_window(data->mlx, data->win,
+		// 	data->gun_img[1], (SCREEN_WIDTH / 2) - 70, SCREEN_HEIGHT - 128);
+		// printf("fire\n");
+		i += 1;
 		img = mlx_xpm_file_to_image(data->mlx, data->gun[(int)i], &x, &y);
 		mlx_put_image_to_window(data->mlx, data->win,
 			img, (SCREEN_WIDTH / 2) - 70, SCREEN_HEIGHT - 128);
 		i += 0.5;
 	}
-	if (i >= 4)
+	if (i >= 3)
 		i = 0;
 }
 

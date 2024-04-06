@@ -6,7 +6,7 @@
 #    By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 15:16:52 by yichan            #+#    #+#              #
-#    Updated: 2024/04/05 21:17:05 by etlaw            ###   ########.fr        #
+#    Updated: 2024/04/06 18:32:52 by etlaw            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3d
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
-CFLAGS += -fsanitize=address -g3
+# CFLAGS += -fsanitize=address -g3
 # CFLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
 SRCS_PATH	= ./srcs/**

@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/05 20:41:30 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/06 18:35:00 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,8 @@ typedef struct s_data
 	int			cell_size; // minimap cellsize
 	int			expand; // press space to expand
 	int			shoot; // press left click to shoot
-	char		*gun[4]; // gun textures
+	char		*gun[4];
+	void		*gun_img[4];// gun textures
 	void		*mlx;
 	void		*win;
 	t_img		*img;
