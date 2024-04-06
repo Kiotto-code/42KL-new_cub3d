@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:53:53 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/03 21:58:32 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/07 00:03:08 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,41 +129,8 @@ void	ray_the_caster(t_data *data)
 		single_ray(data, tmp);
 		if (draw.x != RAY_COUNT / 2)
 			data->wall.distance *= vec_dot(data->player.dir, tmp);
-		if (data->door_state != CLOSE)
-			draw_vertical_line(data, &(data->texture)
-			[data->wall.direction], &data->wall, draw);
-		else if (data->door_state == CLOSE)
-			draw_vertical_line(data, &data->close_door \
-			, &data->wall, draw);
+		draw_vertical_line(data, &(data->texture)
+		[data->wall.direction], &data->wall, draw);
 		draw.x++;
 	}
 }
-// void	ray_the_caster(t_data *data)
-// {
-// 	t_vector	init_pos;
-// 	t_vector	tmp;
-// 	t_intvector	draw;
-
-// 	init_pos = get_init_pos(data->player);
-// 	draw.x = 0;
-// 	draw.y = 0;
-// 	while (draw.x < RAY_COUNT)
-// 	{
-// 		data->door_state = 0;
-// 		tmp = rotatevector(vector_substr(init_pos, data->player.pos), \
-// 							get_next_angle(init_pos, data->player, draw.x));
-// 		single_ray(data, tmp);
-// 		if (draw.x != RAY_COUNT / 2)
-// 			data->wall.distance *= vec_dot(data->player.dir, tmp);
-// 		if (data->door_state == 0)
-// 			draw_vertical_line(data, &(data->texture)
-// 				[data->wall.direction], &data->wall, draw);
-// 		else if (data->door_state == OPEN)
-// 			draw_vertical_line(data, &data->open_door
-// 			, &data->wall, draw);
-// 		else if(data->door_state == CLOSE)
-// 			draw_vertical_line(data, &data->close_door
-// 			, &data->wall, draw);
-// 		draw.x++;
-// 	}
-// }
