@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yichan/work/cub3d/libft/includes",
+      "program": "/Users/yichan/work/cub3d/libft/includes/build/Debug/outDebug"
+    }
+  ]
+}
