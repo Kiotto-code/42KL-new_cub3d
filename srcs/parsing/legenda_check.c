@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   legenda_check.c                                    :+:      :+:    :+:   */
+/*   element_rec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -72,7 +72,7 @@ static void	extract_colour(t_data *data, char *colour_str, t_colour *colour)
 	free_2d(channels);
 }
 
-static void	legenda_check(t_data *data, char *word, char *path)
+static void	element_rec(t_data *data, char *word, char *path)
 {
 	if (!data->ceiling && ft_strcmp(word, "C") == 0)
 	{
@@ -112,7 +112,7 @@ void	element_check(t_data *data, char **file)
 			errno(INV_CHAR, "", data);
 		*file += len;
 		path = skip_spaces(file);
-		legenda_check(data, word, path);
+		element_rec(data, word, path);
 		*file += ft_strlen(path);
 		free(word);
 		free(path);

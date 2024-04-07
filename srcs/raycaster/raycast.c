@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:53:53 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/07 00:03:08 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/07 20:34:32 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ double	horizontal_raycast(t_data *data, t_vector direction)
 
 	if (direction.y == 0)
 		return (A_VERY_VERY_BIG_NUMMER);
-	vec.strich.y = direction_check(data, direction, vec.strich.y, 1);
+	vec.dist.y = direction_check(data, direction, vec.dist.y, 1);
 	vec.tmp.y = ft_abs(direction.y);
 	vec.tmp.x = direction.x;
-	ratio = vec.tmp.y / vec.strich.y;
-	vec.strich.x = vec.tmp.x / ratio;
-	vec.strich = dir_smoler_zero(direction, vec.strich, 1);
-	vec.first_inter.x = data->player.pos.x + vec.strich.x;
-	vec.first_inter.y = data->player.pos.y + vec.strich.y;
+	ratio = vec.tmp.y / vec.dist.y;
+	vec.dist.x = vec.tmp.x / ratio;
+	vec.dist = dir_smoler_zero(direction, vec.dist, 1);
+	vec.first_inter.x = data->player.pos.x + vec.dist.x;
+	vec.first_inter.y = data->player.pos.y + vec.dist.y;
 	cond = end_condition(data, vec.first_inter);
 	if (direction.y < 0)
-		vec.strich.y += 0.001;
+		vec.dist.y += 0.001;
 	if (cond == 0)
 		vec.first_inter = cond_horiz_zero(data, vec, direction, ratio);
 	data->wall.pos.x = fabs(vec.first_inter.x);
@@ -46,17 +46,17 @@ double	vertical_raycast(t_data *data, t_vector direction)
 
 	if (direction.x == 0)
 		return (A_VERY_VERY_BIG_NUMMER);
-	vec.strich.x = direction_check(data, direction, vec.strich.x, 0);
+	vec.dist.x = direction_check(data, direction, vec.dist.x, 0);
 	vec.tmp.x = ft_abs(direction.x);
 	vec.tmp.y = direction.y;
-	ratio = vec.tmp.x / vec.strich.x;
-	vec.strich.y = vec.tmp.y / ratio;
-	vec.strich = dir_smoler_zero(direction, vec.strich, 0);
-	vec.first_inter.x = data->player.pos.x + vec.strich.x;
-	vec.first_inter.y = data->player.pos.y + vec.strich.y;
+	ratio = vec.tmp.x / vec.dist.x;
+	vec.dist.y = vec.tmp.y / ratio;
+	vec.dist = dir_smoler_zero(direction, vec.dist, 0);
+	vec.first_inter.x = data->player.pos.x + vec.dist.x;
+	vec.first_inter.y = data->player.pos.y + vec.dist.y;
 	cond = end_condition(data, vec.first_inter);
 	if (direction.x < 0)
-		vec.strich.x += 0.001;
+		vec.dist.x += 0.001;
 	if (cond == 0)
 		vec.first_inter = cond_vert_zero(data, vec, direction, ratio);
 	data->wall.pos.y = vec.first_inter.y;
