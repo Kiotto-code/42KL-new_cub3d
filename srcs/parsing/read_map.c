@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:18 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/03 10:42:37 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/07 22:32:20 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,18 @@
  */
 char	*read_file(int fd)
 {
-	int		buflen;
 	char	*line;
-	char	*buf;
+	char	*tmp;
 
-	buflen = 1;
 	line = ft_calloc(1, 1);
-	buf = malloc(BUFFERSIZE + 1 * sizeof(char));
-	while (buflen > 0)
+	while (true)
 	{
-		buflen = read(fd, buf, BUFFERSIZE);
-		if (buflen <= 0)
-			free (buf);
-		if (buflen == 0)
-			return (line);
-		if (buflen < 0)
-			return (NULL);
-		buf[buflen] = '\0';
-		line = ft_strjoinf(line, buf);
+		tmp = get_next_line(fd);
+		if (tmp == NULL)
+			break ;
+		line = ft_strjoinf(line, tmp);
+		free(tmp);
 	}
-	close(fd);
+	line = ft_strjoinf(line, "\n");
 	return (line);
 }
