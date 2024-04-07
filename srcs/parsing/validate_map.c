@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/07 21:48:02 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/08 00:54:15 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,25 @@ static bool	around_space_valid(t_data *data, char **map, int x, int y)
 	return (true);
 }
 
+int	all_wall(char *str)
+{
+	int	status;
+
+	status = SUCCESS;
+	while (*str++ && status == SUCCESS)
+	{
+		if (*str == '\0')
+			break ;
+		if (ft_strchr("1 ", *str) == NULL)
+		{
+			status |= FAIL;
+			printf(RED"check: %s;ine break here\n", str);
+			break ;
+		}
+	}
+	return (status);
+}
+
 /**
  * If there is anything but a 1 or space neighbouring a space, the map is not
  * enclosed and returns an error. Also checks for invalid characters in the map.
@@ -55,12 +74,12 @@ static int	mapcheck(t_data *data, char **map)
 	int	y;
 	int	player;
 
-	x = 0;
-	y = 0;
+	x = -1;
+	y = -1;
 	player = 0;
-	while (y < data->map_height && map[y])
+	while (++y < data->map_height && map[y])
 	{
-		while (x < data->map_width && map[y][x])
+		while (++x < data->map_width && map[y][x])
 		{
 			if (!is_valid_char(map[y][x]))
 				errno(INV_CHAR, "", data);
@@ -70,11 +89,11 @@ static int	mapcheck(t_data *data, char **map)
 				player++;
 			if (player > 1)
 				errno(PLAYERS, "", data);
-			x++;
 		}
 		x = 0;
-		y++;
 	}
+	if (all_wall(map[y - 1]) == FAIL || all_wall(map[0]) == FAIL)
+		errno(INV_MAP, "", data);
 	return (player);
 }
 

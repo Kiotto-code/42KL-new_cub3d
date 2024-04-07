@@ -6,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 15:16:52 by yichan            #+#    #+#              #
-#    Updated: 2024/04/07 22:33:04 by yichan           ###   ########.fr        #
+#    Updated: 2024/04/08 00:40:09 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3d
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
-# CFLAGS += -fsanitize=address -g3
+CFLAGS += -fsanitize=address -g3
 # CFLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
 SRCS_PATH	= ./srcs/**
