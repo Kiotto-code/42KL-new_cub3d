@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/03 10:44:30 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/07 21:48:02 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	extract_map(t_data *data, char *file)
 	data->map_height -= count_newlines_end(file);
 	if (data->map_height < 3 || data->map_width < 3)
 		errno(READ_FAIL, "", data);
-	data->map = ft_calloc(data->map_height, sizeof(char *) + 1);
+	data->map = ft_calloc(data->map_height +1, sizeof(char *));
 	while (i < (size_t)data->map_height)
 	{
 		data->map[i] = ft_calloc(data->map_width + 1, sizeof(char));
