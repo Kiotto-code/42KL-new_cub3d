@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edgecases.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:52 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/03 10:40:21 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/07 20:54:56 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,24 +86,24 @@ double	direction_check(t_data *data, t_vector direction, double y, bool horiz)
 	}
 }
 
-t_vector	dir_smoler_zero(t_vector direction, t_vector strich, bool horiz)
+t_vector	dir_smoler_zero(t_vector direction, t_vector dist, bool horiz)
 {
 	if (horiz)
 	{
 		if (direction.y < 0)
 		{
-			strich.y *= (-1);
-			strich.y -= 0.001;
+			dist.y *= (-1);
+			dist.y -= 0.001;
 		}
-		return (strich);
+		return (dist);
 	}
 	else
 	{
 		if (direction.x < 0)
 		{
-			strich.x *= (-1);
-			strich.x -= 0.001;
+			dist.x *= (-1);
+			dist.x -= 0.001;
 		}
-		return (strich);
+		return (dist);
 	}
 }

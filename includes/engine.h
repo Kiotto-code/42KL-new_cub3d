@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:41 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/02 00:55:50 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/07 20:59:34 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_img
 typedef struct s_vecstack
 {
 	t_vector	tmp;
-	t_vector	strich;
+	t_vector	dist;
 	t_vector	first_inter;
 }	t_vecstack;
 
@@ -70,7 +70,7 @@ t_vector	vector_substr(t_vector first, t_vector second);
 t_vector	rotatevector(t_vector vct, double angle); //do not rename!!!!!!!
 
 /* raycasting */
-void		ray_the_caster(t_data *data);
+void		raycaster(t_data *data);
 bool		is_wall(t_data *data, t_vector pos);
 bool		ray_wall(t_data *data, t_vector pos);
 double		horizontal_raycast(t_data *data, t_vector direction);
@@ -89,6 +89,6 @@ t_vector	cond_horiz_zero(t_data *data, t_vecstack vec, \
 								t_vector dir, double ratio);
 t_vector	cond_vert_zero(t_data *data, t_vecstack vec, \
 								t_vector dir, double ratio);
-t_vector	dir_smoler_zero(t_vector direction, t_vector strich, bool horiz);
+t_vector	dir_smoler_zero(t_vector direction, t_vector dist, bool horiz);
 
 #endif

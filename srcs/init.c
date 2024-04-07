@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:38 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/04 00:32:20 by yichan           ###   ########.fr       */
+/*   Updated: 2024/04/07 00:03:46 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	init(t_data *data)
 	data->texture[WEST].img = ft_calloc(1, sizeof(t_img));
 	data->cursur.img = ft_calloc(1, sizeof(t_img));
 	data->open_door.img = ft_calloc(1, sizeof(t_img));
-	data->close_door.img = ft_calloc(1, sizeof(t_img));
 	data->canvas.img = ft_calloc(1, sizeof(t_img));
 	init_texture(data, &data->cursur, CURSUR_PATH);
 }

@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:38:29 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/02 22:37:57 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/07 20:59:34 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ int	game_loop(void *data2)
 	{
 		mlx_do_key_autorepeaton(data->mlx);
 		move(data, data->player.movement);
-		ray_the_caster(data);
+		raycaster(data);
 		put_minimap(data);
 		mlx_put_image_to_window(data->mlx, data->win, \
 							data->canvas.img->ptr, 0, 0);
-		put_cursur(data);
 		put_gun(data);
+		put_cursur(data);
 		check_mouse_movement(data);
 		mlx_hook(data->win, KEY_PRESS, KeyPressMask, move_on_press, data);
 		mlx_hook(data->win, KEY_RELEASE, KeyPressMask, move_on_release, data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:26 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/04 00:10:39 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/08 04:10:41 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@
 # define TURN_RIGHT 32
 
 # define CURSUR_PATH "textures/seal.xpm"
-# define C_DOOR_PATH 
-# define O_DOOR_PATH
+# define C_DOOR_PATH "textures/frieren_3_(1).xpm"
+# define O_DOOR_PATH "textures/green_trans.xpm"
 
 # define SPEED 0.5
 # define ROTATE 0.15
@@ -110,6 +110,12 @@
 #  define Q_KEY 12
 
 # endif
+
+enum	e_status
+{
+	SUCCESS,
+	FAIL,
+};
 
 typedef enum errno
 {
@@ -213,7 +219,8 @@ typedef struct s_data
 	int			cell_size; // minimap cellsize
 	int			expand; // press space to expand
 	int			shoot; // press left click to shoot
-	char		*gun[4]; // gun textures
+	char		*gun[4];
+	void		*gun_img[4];// gun textures
 	void		*mlx;
 	void		*win;
 	t_img		*img;

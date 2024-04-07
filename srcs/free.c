@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:39:33 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/02 23:10:17 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/07 00:03:21 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	free_data(t_data *data)
 	free_texture(data->texture);
 	free_1_texture(&data->cursur);
 	free_1_texture(&data->open_door);
-	free_1_texture(&data->close_door);
 	free_1_texture(&data->canvas);
 	if (data->floor)
 		free(data->floor);
