@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:53:53 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/07 20:34:32 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/07 20:59:34 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ bool	ray_door(t_data *data, t_vector pos)
 	return (false);
 }
 
-void	ray_the_caster(t_data *data)
+void	raycaster(t_data *data)
 {
 	t_vector	init_pos;
 	t_vector	tmp;

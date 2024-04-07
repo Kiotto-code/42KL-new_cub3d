@@ -6,7 +6,7 @@
 /*   By: etlaw <ethanlxz@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:31:41 by yichan            #+#    #+#             */
-/*   Updated: 2024/04/07 20:34:32 by etlaw            ###   ########.fr       */
+/*   Updated: 2024/04/07 20:59:34 by etlaw            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_vector	vector_substr(t_vector first, t_vector second);
 t_vector	rotatevector(t_vector vct, double angle); //do not rename!!!!!!!
 
 /* raycasting */
-void		ray_the_caster(t_data *data);
+void		raycaster(t_data *data);
 bool		is_wall(t_data *data, t_vector pos);
 bool		ray_wall(t_data *data, t_vector pos);
 double		horizontal_raycast(t_data *data, t_vector direction);
